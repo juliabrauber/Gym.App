@@ -1,22 +1,37 @@
 import React, { useState } from 'react';
-import { Image, StyleSheet, View, TouchableOpacity } from 'react-native'
+import { Image, View, TouchableOpacity } from 'react-native'
 import { Button, Input, Text } from '@rneui/themed';
 import { useNavigation } from '@react-navigation/native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Ionicons } from '@expo/vector-icons';
+import { useForm, Controller } from 'react-hook-form';
+
+import styles from "../Register/style";
 
 const Register = () => {
 
     const navigation = useNavigation()
 
-    const handleNavLogin = () => {
-        navigation.navigate("Login");
-    };
-
-    const [escolhaSenha, setEscolhaSenha] = useState('');
-    const [confirmeSenha, setConfirmeSenha] = useState('');
     const [hideSenha, setHideSenha] = useState(true);
     const [hideConfirmeSenha, setHideConfirmeSenha] = useState(true);
+
+    const { control, handleSubmit, formState: { errors } } = useForm({
+        defaultValues: {
+          nome: '',
+          sobrenome: '',
+          email: '',
+          telefone: '',
+          escolhaSenha: '',
+          confirmeSenha: '',
+        },
+      });
+  
+        const handleSignIn = (data) => {
+          if (data.nome === '' || data.sobrenome === '' || data.email === '' || telefone === '' || escolhaSenha === '' || confirmeSenha === '') {
+            return;
+          }
+          navigation.navigate("Home");
+        };
 
   return (
     <KeyboardAwareScrollView> 
@@ -27,49 +42,102 @@ const Register = () => {
         <Text style={{fontSize:23}} >Cadastro:</Text>
         </View>
 
+        <Controller
+          control={control}
+          rules={{required: true,}}
+          render={({ field }) => (
         <Input containerStyle={{width:"85%"}}
         style={{color: "black"}} 
-        placeholder='Nome'/>
+        placeholder='Nome'
+        onChangeText={(text) => field.onChange(text)}
+        value={field.value}/>
+        )}
+        name="nome"/>
+        {errors.nome && <Text style={{ color: 'red', marginTop: -15 }}>Nome obrigatório!</Text>}
 
+        <Controller
+          control={control}
+          rules={{required: true,}}
+          render={({ field }) => (
         <Input containerStyle={{width:"85%"}}
         style={{color: "black"}} 
-        placeholder='Sobrenome'/>
+        placeholder='Sobrenome'
+        onChangeText={(text) => field.onChange(text)}
+        value={field.value}/>
+        )}
+        name="sobrenome" />
+        {errors.sobrenome && <Text style={{ color: 'red', marginTop: -15 }}>Sobrenome obrigatório!</Text>}
 
-        <Input containerStyle={{width:"85%"}}
-        style={{color: "black"}} 
-        placeholder='Telefone'/>
 
+        <Controller
+          control={control}
+          rules={{required: true,}}
+          render={({ field }) => (
+       <Input containerStyle={{width:"85%"}}
+        style={{color: "black"}} 
+        placeholder='E-mail'
+        onChangeText={(text) => field.onChange(text)}
+        value={field.value}/>
+        )}
+        name="email" />
+        {errors.email && <Text style={{ color: 'red', marginTop: -15 }}>E-mail obrigatório!</Text>}
+
+
+        <Controller
+          control={control}
+          rules={{required: true,}}
+          render={({ field }) => (
         <Input containerStyle={{width:"85%"}}
         style={{color: "black"}} 
-        placeholder='E-mail'/>
+        placeholder='Telefone'
+        onChangeText={(text) => field.onChange(text)}
+        value={field.value}/>
+        )}
+        name="telefone" />
+        {errors.telefone && <Text style={{ color: 'red', marginTop: -15 }}>Telefone obrigatório!</Text>}
+
 
         <View style={{ flexDirection: 'row', width: '85%', alignItems: 'center',justifyContent: 'flex-end' }}>
+        <Controller
+          control={control}
+          rules={{required: true,}}
+          render={({ field }) => (
         <Input containerStyle={{flex: 1}}
         style={{color: "black"}}
         secureTextEntry={hideSenha}
         placeholder='Escolha uma senha'
-        value={escolhaSenha}
-        onChangeText={(text) => setEscolhaSenha(text)}/>
+        onChangeText={(text) => field.onChange(text)}
+        value={field.value}/>
+        )}
+        name="escolhaSenha"/>
 
         <TouchableOpacity onPress={() => setHideSenha(!hideSenha)}>
             <Ionicons name={hideSenha ? "ios-eye" : "ios-eye-off"} style={{ color: "#000000", fontSize: 23 }} />
         </TouchableOpacity>
         </View>
+        {errors.escolhaSenha && <Text style={{ color: 'red', marginTop: -15 }}>Senha obrigatório!</Text>}
 
         <View style={{ flexDirection: 'row', width: '85%', alignItems: 'center',justifyContent: 'flex-end' }}>
+        <Controller
+          control={control}
+          rules={{required: true,}}
+          render={({ field }) => (  
         <Input containerStyle={{flex: 1}}
         style={{color: "black"}}
         secureTextEntry={hideConfirmeSenha}
         placeholder='Confirmar senha senha'
-        value={confirmeSenha}
-        onChangeText={(text) => setConfirmeSenha(text)}/>
+        onChangeText={(text) => field.onChange(text)}
+        value={field.value}/>
+        )}
+        name="confirmeSenha"/>
 
         <TouchableOpacity onPress={() => setHideConfirmeSenha(!hideConfirmeSenha)}>
             <Ionicons name={hideConfirmeSenha ? "ios-eye" : "ios-eye-off"} style={{ color: "#000000", fontSize: 23 }} />
         </TouchableOpacity>
         </View>
+        {errors.confirmeSenha && <Text style={{ color: 'red', marginTop: -15 }}>Confirmar senha obrigatório!</Text>}
 
-        <Button onPress={() => {handleNavLogin();}}
+        <Button onPress={() => handleSubmit(handleSignIn)()}
          containerStyle={{width:"100%", marginTop:40}}
         buttonStyle={{ borderColor:'transparent',  borderRadius: 30, backgroundColor:"#1CA69E"  }}
         titleStyle={{ color: '#ffffff' }}
@@ -80,22 +148,5 @@ const Register = () => {
       </KeyboardAwareScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-    scrollView:{
-        flex:1,
-    },
-    container:{
-        flex:1,
-        backgroundColor:"#ffffff",
-        paddingTop: 120,
-        paddingBottom:60,
-        alignItems:"center"
-    },
-    logo:{
-        width:120,
-        height:120,
-    },
-})
 
 export default Register;
