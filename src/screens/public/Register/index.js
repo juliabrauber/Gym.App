@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Ionicons } from '@expo/vector-icons';
 import { useForm, Controller } from 'react-hook-form';
+import RNPickerSelect from 'react-native-picker-select';
 
 import styles from "../Register/style";
 
@@ -23,11 +24,13 @@ const Register = () => {
           telefone: '',
           escolhaSenha: '',
           confirmeSenha: '',
+          pickerSelect:'',
         },
       });
   
         const handleSignIn = (data) => {
-          if (data.nome === '' || data.sobrenome === '' || data.email === '' || telefone === '' || escolhaSenha === '' || confirmeSenha === '') {
+          if (data.nome === '' || data.sobrenome === '' || data.email === '' || data.pickerSelect === '' ||
+          data.telefone === '' || data.escolhaSenha === '' || data.confirmeSenha === '') {
             return;
           }
           navigation.navigate("Home");
@@ -136,6 +139,43 @@ const Register = () => {
         </TouchableOpacity>
         </View>
         {errors.confirmeSenha && <Text style={{ color: 'red', marginTop: -15 }}>Confirmar senha obrigatório!</Text>}
+
+        
+        <Controller
+          control={control}
+          rules={{ required: true }}
+          render={({ field }) => (
+            <View style={styles.selectStyles}>
+            <RNPickerSelect
+              placeholder={{ label: 'Selecione uma opção de perfil', value: null }}
+              onValueChange={(value) => field.onChange(value)}
+              items={[
+                { label: 'Academia', value: 'Academia' },
+                { label: 'Aluno', value: 'Aluno' },
+                { label: 'Nutricionista', value: 'Nutricionista' },
+                { label: 'Personal', value: 'Personal' },
+              ]} style={{
+                inputIOS: {
+                  width: '100%', alignItems: 'center', flex:1, marginTop:2, paddingVertical: 7,
+                  backgroundColor: "#ffffff", color:"#1CA69E", borderColor: "#1CA69E" , borderRadius: 30, borderWidth: 2,
+                  textAlign: 'center', fontSize: 18,
+                },
+                inputAndroid: {
+                  width: '100%', alignItems: 'center', flex:1, marginTop:2, paddingVertical: 7,
+                  backgroundColor: "#ffffff", color:"#1CA69E", borderColor: "#1CA69E" , borderRadius: 30, borderWidth: 2,
+                  textAlign: 'center', fontSize: 18,
+                },
+              }}
+            />
+            </View>
+          )}
+          name="pickerSelect"
+        />
+        {errors.pickerSelect && (
+          <Text style={{ color: 'red', marginTop: -15 }}>Seleção obrigatória!</Text>
+        )}
+
+
 
         <Button onPress={() => handleSubmit(handleSignIn)()}
          containerStyle={{width:"100%", marginTop:40}}

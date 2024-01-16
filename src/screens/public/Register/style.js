@@ -15,6 +15,11 @@ const styles = StyleSheet.create({
         width:120,
         height:120,
     },
+    selectStyles:{
+        width:"100%", 
+        marginTop:40
+    },
+    
 })
 
 export default styles;
