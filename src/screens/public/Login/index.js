@@ -5,11 +5,14 @@ import { useNavigation } from '@react-navigation/native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Ionicons } from '@expo/vector-icons';
 import { useForm, Controller } from 'react-hook-form';
+// import { useAuth } from './AuthContext';
+
 
 import styles from "../Login/style";
 
 const Login = () => {
 
+  // const { login } = useAuth();
   const navigation = useNavigation();
   const handleNavRegister = () => { navigation.navigate("Register"); };
   const handleNavRedPassword = () => { navigation.navigate("RedPassword"); };
