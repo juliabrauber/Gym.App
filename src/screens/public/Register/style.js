@@ -16,8 +16,7 @@ const styles = StyleSheet.create({
         height:120,
     },
     selectStyles:{
-        width:"100%", 
-        marginTop:40
+    flex:1, width: '80%', alignItems: 'center', marginBottom:33, justifyContent: 'center',
     },
     
 })
