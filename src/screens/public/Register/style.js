@@ -7,13 +7,13 @@ const styles = StyleSheet.create({
     container:{
         flex:1,
         backgroundColor:"#ffffff",
-        paddingTop: 120,
+        paddingTop: 90,
         paddingBottom:60,
         alignItems:"center"
     },
     logo:{
-        width:120,
-        height:120,
+        width:175,
+        height:175,
     },
     selectStyles:{
     flex:1, width: '80%', alignItems: 'center', marginBottom:33, justifyContent: 'center',

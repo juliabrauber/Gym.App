@@ -16,6 +16,7 @@ const Login = () => {
   const navigation = useNavigation();
   const handleNavRegister = () => { navigation.navigate("Register"); };
   const handleNavRedPassword = () => { navigation.navigate("RedPassword"); };
+  const handleNavHomeAluno = () => {navigation.navigate('HomeAluno');};
   const [passHide, setPassHide] = useState(true);
 
   const { control, handleSubmit, formState: { errors } } = useForm({
@@ -29,7 +30,7 @@ const Login = () => {
     if (data.login === '' || data.senha === '') {
       return;
     }
-    navigation.navigate("Home");
+    navigation.navigate("HomeAluno");
   };
 
   return (
@@ -73,13 +74,13 @@ const Login = () => {
         {errors.senha && <Text style={{ color: 'red', marginTop: -15 }}>Senha é obrigatório!</Text>}
 
         <Button onPress={() => { handleNavRedPassword(); }}
-          containerStyle={{ width: "100%", marginTop: 20, borderWidth: 0 }}
+          containerStyle={{ width: "100%", marginTop: -8, borderWidth: 0 }}
           titleStyle={{ color: "#808080", textAlign: "right", textDecorationLine: "underline", fontSize: 14, }}
           title="Esqueceu sua senha?"
           type="clear" />
 
         <Button onPress={() => handleSubmit(handleSignIn)()}
-          containerStyle={{ width: "100%", marginTop: 30 }}
+          containerStyle={{ width: "100%", marginTop: 50 }}
           buttonStyle={{ borderColor: 'transparent', borderRadius: 30, backgroundColor: "#1CA69E" }}
           titleStyle={{ color: "#ffffff" }}
           title="Fazer Login"

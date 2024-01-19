@@ -10,7 +10,7 @@ export default function App() {
       <StatusBar style="light" backgroundColor="#000000" />
            <Routes/>
       {/* <AuthProvider> */}
-           <DashboardTabs />
+           {/* <DashboardTabs /> */}
     {/* </AuthProvider> */}
     </View>
   );
