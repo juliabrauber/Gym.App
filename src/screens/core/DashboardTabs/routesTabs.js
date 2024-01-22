@@ -29,7 +29,7 @@ function RoutesTabs() {
             tabBarLabel:'',
             tabBarIcon: ({ size, color }) => (
               <Entypo name="home" size={28} color={color} />
-            ),
+            ),headerShown: false,
           }}
         />
         <Tab.Screen
@@ -39,7 +39,7 @@ function RoutesTabs() {
             tabBarLabel:'',
             tabBarIcon: ({ size, color }) => (
               <MaterialCommunityIcons name="message-processing-outline" size={28} color={color} />
-            ),
+            ),headerShown: false,
           }}
         />
 
@@ -50,7 +50,7 @@ function RoutesTabs() {
             tabBarLabel:'',
             tabBarIcon: ({ size, color }) => (
               <Ionicons name="notifications" size={28} color={color} />
-            ),
+            ),headerShown: false,
           }}
         />
 
@@ -61,7 +61,7 @@ function RoutesTabs() {
             tabBarLabel:'',
             tabBarIcon: ({ size, color }) => (
               <AntDesign name="setting" size={28} color={color} />
-            ),
+            ),headerShown: false,
           }}
         />
       </Tab.Navigator>
