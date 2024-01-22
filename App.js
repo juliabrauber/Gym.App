@@ -9,9 +9,6 @@ export default function App() {
     <View style={{ flex: 1 }}>
       <StatusBar style="light" backgroundColor="#000000" />
            <Routes/>
-      {/* <AuthProvider> */}
-           {/* <DashboardTabs /> */}
-    {/* </AuthProvider> */}
     </View>
   );
 }

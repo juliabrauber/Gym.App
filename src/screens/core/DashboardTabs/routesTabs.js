@@ -1,17 +1,16 @@
 import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { AntDesign, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign, Entypo, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 
+import HomeAluno from '../../private/Home/HomeAluno';
 import Messages from '../../features/Messages';
 import Notifications from '../../features/Notifications';
 import SettingsProfile from '../../features/SettingsProfile';
 
 const Tab = createBottomTabNavigator();
 
-function DashboardTabs() {
+function RoutesTabs() {
   return (
-    <NavigationContainer>
       <Tab.Navigator
         screenOptions={{
           tabBarStyle: {
@@ -23,6 +22,16 @@ function DashboardTabs() {
           tabBarActiveTintColor: '#ffffff',
         }}
       >
+        <Tab.Screen
+          name="Início"
+          component={HomeAluno}
+          options={{
+            tabBarLabel:'',
+            tabBarIcon: ({ size, color }) => (
+              <Entypo name="home" size={28} color={color} />
+            ),
+          }}
+        />
         <Tab.Screen
           name="Mensagens"
           component={Messages}
@@ -56,8 +65,7 @@ function DashboardTabs() {
           }}
         />
       </Tab.Navigator>
-    </NavigationContainer>
   );
 }
 
-export default DashboardTabs;
+export default RoutesTabs;

@@ -10,11 +10,11 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: 'transparent',
     backgroundColor:"#1CA69E",
-    height:"18%",
+    height:"15%",
   },
   textOla:{
     marginLeft: 20,
-    marginTop: 100,
+    marginTop: 60,
     fontSize: 24,
     fontWeight: 'bold',
     color: 'white',

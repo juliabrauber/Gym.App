@@ -5,18 +5,16 @@ import { useNavigation } from '@react-navigation/native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Ionicons } from '@expo/vector-icons';
 import { useForm, Controller } from 'react-hook-form';
-// import { useAuth } from './AuthContext';
 
 
 import styles from "../Login/style";
 
 const Login = () => {
 
-  // const { login } = useAuth();
   const navigation = useNavigation();
   const handleNavRegister = () => { navigation.navigate("Register"); };
   const handleNavRedPassword = () => { navigation.navigate("RedPassword"); };
-  const handleNavHomeAluno = () => {navigation.navigate('HomeAluno');};
+  const handleNavHomeAluno = () => {navigation.navigate('Home');};
   const [passHide, setPassHide] = useState(true);
 
   const { control, handleSubmit, formState: { errors } } = useForm({
@@ -30,7 +28,7 @@ const Login = () => {
     if (data.login === '' || data.senha === '') {
       return;
     }
-    navigation.navigate("HomeAluno");
+    navigation.navigate("Home");
   };
 
   return (

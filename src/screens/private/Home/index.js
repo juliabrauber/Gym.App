@@ -1,9 +1,10 @@
-import * as React from 'react';
+import RoutesTabs from "../../core/DashboardTabs/routesTabs";
 
 
 function Home() {
-  // return (
-
+  return (
+      <RoutesTabs/>
+  );
 }
 
 export default Home;
