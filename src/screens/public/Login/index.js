@@ -44,12 +44,12 @@ const Login = () => {
           render={({ field }) => (
             <Input containerStyle={{ width: "85%", marginTop: 75 }}
               style={{ color: "black" }}
-              placeholder='Login'
+              placeholder='E-mail'
               onChangeText={(text) => field.onChange(text)}
               value={field.value} />
           )}
           name="login" />
-        {errors.login && <Text style={{ color: 'red', marginTop: -15 }}>Login obrigatório!</Text>}
+        {errors.login && <Text style={{ color: 'red', marginTop: -15 }}>E-mail obrigatório!</Text>}
 
         <View style={{ flexDirection: 'row', width: '85%', alignItems: 'center' }}>
           <Controller

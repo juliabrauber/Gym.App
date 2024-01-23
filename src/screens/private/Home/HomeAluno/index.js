@@ -1,11 +1,27 @@
 import React, { useState } from 'react'
 import { SearchBar, Text } from '@rneui/themed';
 import { View } from 'react-native';
+import { Avatar, Box, FlatList, HStack, Pressable, Icon } from 'native-base';
 
 import styles from './style';
+import Storys from '../../../core/Components/Storys';
 
 const HomeAluno = () => { 
 
+const data = [{
+  id:'1',
+  fullName:'Steve',
+  timeStamp:'12:00 PM',
+  recentText:'Good Day',
+  avatarUrl:'https://sujeitoprogramador.com/steve.png',
+},{
+  id:'2',
+  fullName:'Jobs',
+  timeStamp:'12:05 PM',
+  recentText:'Good',
+  avatarUrl:'https://sujeitoprogramador.com/steve.png',
+},
+]
 
 const [search, setSearch] = useState("");
 
@@ -15,10 +31,28 @@ const updateSearch = (search) => {
 
 return (
   <View style={{ flex: 1 }}>
-    
-        <View style={styles.olaTexto}>
+
+        <View style={styles.container}>
+          <View style={styles.olaTexto}>
           <Text style={styles.textOla}>Olá,</Text>
+              <Pressable style={styles.avatarContainer}>
+              <Avatar
+                source={{ uri: "https://sujeitoprogramador.com/steve.png" }}
+                height={12}
+                width={12}/>
+            </Pressable>
+            </View>
         </View>
+
+          <Box paddingX={4}  marginTop={-150}>
+            <FlatList
+            horizontal={true}
+            data={data}
+            renderItem={({ item}) => <Storys data={item}/>}
+            showsHorizontalScrollIndicator={false}
+            />
+          </Box>
+        
         <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', marginTop: 33, marginLeft: 20, marginBottom: 15 }}> Meu espaço </Text>
 
         <SearchBar
