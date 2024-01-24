@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Heading, Image, Text, VStack } from "native-base";
-import { Feather } from "@expo/vector-icons";
+
 
 export default function Feed({ data }) {
     return (
@@ -22,7 +22,7 @@ export default function Feed({ data }) {
                     alt="Avatar url"/>
              
                 <Heading size="sm" >
-                    Nome Academia
+                   {data.fullName}
                 </Heading>
                 <Text numberOfLine={2}>
                     Próximo a 300 M

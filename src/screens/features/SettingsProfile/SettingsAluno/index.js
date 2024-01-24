@@ -54,7 +54,7 @@ const ConfigAluno = ({ navigation }) => {
         )}
         name="cpf"
       />
-      {errors.cpf && <Text style={{ color: 'red', marginTop: -15 }}>CPF obrigatório!</Text>}
+      {errors.cpf && <Text style={{ color: 'red', marginTop: -15, marginLeft: 12, }}>CPF obrigatório!</Text>}
 
       <Controller
         control={control}
@@ -70,7 +70,7 @@ const ConfigAluno = ({ navigation }) => {
         )}
         name="nascimento"
       />
-      {errors.nascimento && <Text style={{ color: 'red', marginTop: -15 }}>Data de nascimento obrigatório!</Text>}
+      {errors.nascimento && <Text style={{ color: 'red', marginTop: -15, marginLeft: 12, }}>Data de nascimento obrigatório!</Text>}
 
       <Controller
         control={control}
@@ -83,8 +83,23 @@ const ConfigAluno = ({ navigation }) => {
             onChangeText={field.onChange}
             value={field.value}/>)}
         name="cep"/>
-      {errors.cep && <Text style={{ color: 'red', marginTop: -15 }}>CEP obrigatório!</Text>}
-      
+      {errors.cep && <Text style={{ color: 'red', marginTop: -15,marginLeft: 12, }}>CEP obrigatório!</Text>}
+
+      <Controller
+        control={control}
+        rules={{ required: true }}
+        render={({ field }) => (
+          <Input
+            containerStyle={{ width: "15%" }}
+            style={{ color: "black", fontSize: 15}}
+            placeholder='UF'
+            onChangeText={field.onChange}
+            value={field.value}
+          />)}
+        name="uf"/>
+      {errors.uf && <Text style={{ color: 'red', marginTop: -15,marginLeft: 12, }}>UF obrigatório!</Text>}
+
+
       <Controller
         control={control}
         rules={{ required: true }}
@@ -97,7 +112,7 @@ const ConfigAluno = ({ navigation }) => {
             value={field.value}
           />)}
         name="cidade"/>
-      {errors.cidade && <Text style={{ color: 'red', marginTop: -15 }}>Cidade obrigatório!</Text>}
+      {errors.cidade && <Text style={{ color: 'red', marginTop: -15,marginLeft: 12, }}>Cidade obrigatório!</Text>}
 
       <Controller
         control={control}
@@ -111,7 +126,7 @@ const ConfigAluno = ({ navigation }) => {
             value={field.value}
           />)}
         name="rua"/>
-      {errors.rua && <Text style={{ color: 'red', marginTop: -15 }}>Endereço obrigatório!</Text>}
+      {errors.rua && <Text style={{ color: 'red', marginTop: -15,marginLeft: 12, }}>Endereço obrigatório!</Text>}
 
       <Controller
         control={control}
@@ -125,24 +140,12 @@ const ConfigAluno = ({ navigation }) => {
             value={field.value}
           />)}
         name="numero"/>
-      {errors.numero && <Text style={{ color: 'red', marginTop: -15 }}>Número residencial obrigatório!</Text>}
+      {errors.numero && <Text style={{ color: 'red', marginTop: -15,marginLeft: 12, }}>Número residencial obrigatório!</Text>}
 
-      <Controller
-        control={control}
-        rules={{ required: true }}
-        render={({ field }) => (
-          <Input
-            containerStyle={{ width: "20%" }}
-            style={{ color: "black", fontSize: 15}}
-            placeholder='UF'
-            onChangeText={field.onChange}
-            value={field.value}
-          />)}
-        name="uf"/>
-      {errors.uf && <Text style={{ color: 'red', marginTop: -15 }}>UF obrigatório!</Text>}
+     
 
 
-      {dadosSalvos && <Text style={{ color: 'green', marginTop: 10 }}>Dados salvos com sucesso!</Text>}
+      {dadosSalvos && <Text style={{ color: 'green', marginTop: 10, textAlign:'center', fontSize: 18 }}>Dados salvos com sucesso!</Text>}
 
       <Button
         onPress={handleSubmit(handleConcluir)}

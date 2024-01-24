@@ -11,17 +11,18 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: 'transparent',
     backgroundColor:"#1CA69E",
-    height:"45%", 
+    height:"50%", 
     alignItems: 'flex-start',
   },
   textOla:{
-    marginLeft: 80,
-    marginTop: 60,
+    marginLeft: 65,
+    marginTop: 100,
     fontSize: 24,
     fontWeight: 'bold',
     color: 'white',
   },
   avatarContainer: {
+    marginTop: -50 ,
     marginLeft: 10, 
   },
  

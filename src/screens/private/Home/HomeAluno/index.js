@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { SearchBar, Text } from '@rneui/themed';
 import { View } from 'react-native';
 import { Avatar, Box, FlatList, HStack, Pressable, Icon } from 'native-base';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import styles from './style';
 import Storys from '../../../core/Components/Storys';
@@ -31,7 +32,8 @@ const updateSearch = (search) => {
 };
 
 return (
-  <View style={{ flex: 1 }}>
+  <KeyboardAwareScrollView>
+      <View style={{ flex: 1 }}>
 
         <View style={styles.container}>
           <View style={styles.olaTexto}>
@@ -45,7 +47,7 @@ return (
             </View>
         </View>
 
-          <Box paddingX={4}  marginTop={-150}>
+          <Box paddingX={4}  marginTop={-110}>
             <FlatList
             horizontal={true}
             data={data}
@@ -54,7 +56,7 @@ return (
             />
           </Box>
         
-        <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', marginTop: 33, marginLeft: 20, marginBottom: 15 }}> Meu espaço </Text>
+        <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', marginTop: 30, marginLeft: 20, marginBottom: 10 }}> Meu espaço </Text>
 
         <SearchBar
           placeholder="Pesquisar..."
@@ -81,7 +83,9 @@ return (
           </Box>
 
         <Text style={{ color: 'black', fontSize: 18, fontWeight: 'bold', marginTop: 40, marginLeft: 20, }}> Minha evolução </Text>
-  </View>
+
+     </View>
+  </KeyboardAwareScrollView>
 );
 };
 
