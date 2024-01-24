@@ -5,6 +5,7 @@ import { Avatar, Box, FlatList, HStack, Pressable, Icon } from 'native-base';
 
 import styles from './style';
 import Storys from '../../../core/Components/Storys';
+import Feed from '../../../core/Components/Feed';
 
 const HomeAluno = () => { 
 
@@ -69,6 +70,15 @@ return (
         <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', marginTop: 40, marginLeft: 20, }}> Sugestões </Text>
 
         <Text style={{ color: 'black', fontSize: 18, fontWeight: 'bold', marginTop: 40, marginLeft: 20, }}> Próximos a mim </Text>
+
+        <Box paddingX={4}  marginTop={15}>
+            <FlatList
+            horizontal={true}
+            data={data}
+            renderItem={({ item}) => <Feed data={item}/>}
+            showsHorizontalScrollIndicator={false}
+            />
+          </Box>
 
         <Text style={{ color: 'black', fontSize: 18, fontWeight: 'bold', marginTop: 40, marginLeft: 20, }}> Minha evolução </Text>
   </View>
