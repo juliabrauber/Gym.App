@@ -7,6 +7,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import styles from './style';
 import Storys from '../../../core/Components/Storys';
 import Feed from '../../../core/Components/Feed';
+import AgendAluno from '../../../core/Components/agendAluno';
 
 const HomeAluno = () => { 
 
@@ -47,7 +48,7 @@ return (
             </View>
         </View>
 
-          <Box paddingX={4}  marginTop={-110}>
+          <Box paddingX={4}  marginTop={-120} marginBottom={5}>
             <FlatList
             horizontal={true}
             data={data}
@@ -55,8 +56,6 @@ return (
             showsHorizontalScrollIndicator={false}
             />
           </Box>
-        
-        <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', marginTop: 30, marginLeft: 20, marginBottom: 10 }}> Meu espaço </Text>
 
         <SearchBar
           placeholder="Pesquisar..."
@@ -69,9 +68,18 @@ return (
           inputStyle={{ color: 'black' }}
         />
 
-        <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', marginTop: 40, marginLeft: 20, }}> Sugestões </Text>
+        <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', marginTop: 40, marginLeft: 20, }}> Área Pessoal </Text>
 
-        <Text style={{ color: 'black', fontSize: 18, fontWeight: 'bold', marginTop: 40, marginLeft: 20, }}> Próximos a mim </Text>
+        <Box paddingX={4}  marginTop={2}>
+            <FlatList
+            horizontal={true}
+            data={data}
+            renderItem={({ item}) => <AgendAluno data={item}/>}
+            showsHorizontalScrollIndicator={false}
+            />
+          </Box>
+
+        <Text style={{ color: 'black', fontSize: 18, fontWeight: 'bold', marginTop: 20, marginLeft: 20, }}> Locais Próximos </Text>
 
         <Box paddingX={4}  marginTop={15}>
             <FlatList

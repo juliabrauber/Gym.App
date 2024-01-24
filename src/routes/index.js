@@ -12,6 +12,7 @@ import HomeNutricionista from '../screens/private/Home/HomeNutricionista';
 import HomePersonal from '../screens/private/Home/HomePersonal';
 import ConfigAluno from '../screens/features/SettingsProfile/SettingsAluno';
 import SettingsProfile from '../screens/features/SettingsProfile';
+import CheckInAluno from '../screens/core/Components/checkinAluno';
 
 
 const Stack = createNativeStackNavigator();
@@ -30,6 +31,7 @@ function Routes() {
         <Stack.Screen name="HomePersonal" component={HomePersonal} />
         <Stack.Screen name="ConfigAluno" component={ConfigAluno} />
         <Stack.Screen name="SettingsProfile" component={SettingsProfile} />
+        <Stack.Screen name="CheckInAluno" component={CheckInAluno} />
 
       </Stack.Navigator> 
     </NavigationContainer>
