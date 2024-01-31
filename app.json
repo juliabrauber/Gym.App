@@ -15,7 +15,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "Precisamos de permissão para acessar a câmera",
+        "NSPhotoLibraryUsageDescription": "Precisamos de permissão para acessar a biblioteca de fotos"
+      }
     },
     "android": {
       "adaptiveIcon": {

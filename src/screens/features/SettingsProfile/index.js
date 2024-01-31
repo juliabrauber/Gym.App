@@ -17,7 +17,6 @@ const SettingsProfile = () => {
   return (
     <View style={{ flex: 1 }}>
       <View style={styles.olaTexto}>
-          <Text style={styles.textOla}>Olá,</Text>
         </View>
       <Button
         onPress={handleNavConfigAluno}

@@ -63,7 +63,7 @@ const CheckInAluno = () => {
             </Stack >
 
             <TouchableOpacity onPress={handleCheckInPress} style={styles.checkInButton}>
-              <Text style={{ color: '#ffffff', fontSize: '16', alignItems:"center"  }}>Check In</Text>
+              <Text style={{ color: '#ffffff', alignItems:"center"  }}>Check In</Text>
             </TouchableOpacity>
           </VStack>
         ) : (

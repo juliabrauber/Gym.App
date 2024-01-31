@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { SearchBar, Text } from '@rneui/themed';
 import { View } from 'react-native';
-import { Avatar, Box, FlatList, HStack, Pressable, Icon } from 'native-base';
+import { Avatar, Box, FlatList, Pressable, } from 'native-base';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import styles from './style';
