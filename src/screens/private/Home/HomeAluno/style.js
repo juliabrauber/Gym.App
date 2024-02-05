@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: 'transparent',
     backgroundColor:"#1CA69E",
-    height:"50%", 
+    height:140, 
     alignItems: 'flex-start',
   },
   textOla:{

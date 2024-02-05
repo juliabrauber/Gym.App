@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { SearchBar, Text } from '@rneui/themed';
+import { Button, SearchBar, Text } from '@rneui/themed';
 import { View } from 'react-native';
 import { Avatar, Box, FlatList, Pressable, } from 'native-base';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
@@ -33,7 +33,7 @@ const updateSearch = (search) => {
 };
 
 return (
-  <KeyboardAwareScrollView>
+  <KeyboardAwareScrollView > 
       <View style={{ flex: 1 }}>
 
         <View style={styles.container}>
@@ -48,7 +48,7 @@ return (
             </View>
         </View>
 
-          <Box paddingX={4}  marginTop={-120} marginBottom={5}>
+          <Box paddingX={4}  marginTop={5} marginBottom={5}>
             <FlatList
             horizontal={true}
             data={data}
@@ -90,7 +90,15 @@ return (
             />
           </Box>
 
-        <Text style={{ color: 'black', fontSize: 18, fontWeight: 'bold', marginTop: 40, marginLeft: 20, }}> Minha evolução </Text>
+        <Text style={{ color: 'black', fontSize: 18, fontWeight: 'bold', marginTop: 40, marginLeft: 20, }}> Treino e evolução </Text>
+
+        <Button 
+       containerStyle={{width:"40%", marginTop:30, marginLeft: 20, paddingBottom: 20}}
+        buttonStyle={{ borderColor:'transparent',  borderRadius: 15, backgroundColor:"#1CA69E"  }}
+        titleStyle={{ color: "#ffffff", fontSize:15 }}
+        title="Meu treino" 
+        type="outline" />
+
 
      </View>
   </KeyboardAwareScrollView>

@@ -85,7 +85,7 @@ const Login = () => {
           type="outline" />
 
         <Button onPress={() => { handleNavRegister(); }}
-          containerStyle={{ width: "85%", marginTop: 30 }}
+          containerStyle={{ width: "85%", marginTop: 30, marginBottom:150 }}
           buttonStyle={{ borderColor: 'transparent', borderRadius: 30, backgroundColor: "#1CA69E" }}
           titleStyle={{ color: "#ffffff" }}
           title="Cadastre-se"
