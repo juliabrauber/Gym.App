@@ -48,13 +48,12 @@ const HomeAcademia = () => {
               </View>
           </View>
   
-            <Box paddingX={4}  marginTop={-120} marginBottom={5}>
+            <Box paddingX={4}  marginTop={5} marginBottom={5}>
               <FlatList
               horizontal={true}
               data={data}
               renderItem={({ item}) => <Storys data={item}/>}
-              showsHorizontalScrollIndicator={false}
-              />
+              showsHorizontalScrollIndicator={false} />
             </Box>
   
           <SearchBar

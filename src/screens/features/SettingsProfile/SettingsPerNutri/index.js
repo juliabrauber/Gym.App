@@ -1,36 +1,36 @@
 import React, { useState } from 'react';
 import { Image, View } from 'react-native';
-import {Button, Input, Text } from '@rneui/themed';
+import { Button, Input, Text } from '@rneui/themed';
 import { useForm, Controller } from 'react-hook-form';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import * as ImagePicker from 'expo-image-picker';
 
-
-const ConfigAluno = ({ navigation }) => {
+const ConfigPerNutri = ({ navigation }) => {
   const { control, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
-      nascimento: '',
       cpf:'',
       cep:'',
       rua:'',
       cidade:'',
       numero:'',
       uf:'',
+      funcionamento:'',
+      valor:'',
     },
   });
 
   const [dadosSalvos, setDadosSalvos] = useState(false);
   const [profileImage, setProfileImage] = useState(null);
-
+  
   const handleConcluir = (data) => {
-    if (data.nascimento === '' || data.cpf ==='' || data.cep ==='' || data.rua === ''|| data.cidade ==='' || data.numero ==='' || data.uf === '') { 
+    if (data.cpf ==='' || data.cep ==='' || data.rua === ''|| data.cidade ==='' || data.numero ==='' || 
+    data.uf === ''|| data.funcionamento ==='' || data.valor ==='') { 
       return;
     }
     setTimeout(() => {
       setDadosSalvos(true);
     }, 500);
   };
-
   const handleImagePick = async () => {
     const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
@@ -47,14 +47,12 @@ const ConfigAluno = ({ navigation }) => {
     setProfileImage(null);
   };
 
-
   return (
-
     <KeyboardAwareScrollView>
-     <View style={{ flex: 1, alignItems: 'center' }}>
+      <View style={{ flex: 1,  alignItems: 'center' }}>
         <View style={{ alignItems: 'center', marginTop: 60 }}>
         <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', marginBottom:10}}>
-            Aluno
+            Profissional
           </Text>
           {profileImage && (
             <Image source={{ uri: profileImage }} style={{ width: 100, height: 100, borderRadius: 75 }} />
@@ -78,8 +76,68 @@ const ConfigAluno = ({ navigation }) => {
             />
           )}
         </View>
+        
+        <Text style={{ color: 'black', fontSize: 18, fontWeight: 'bold', marginTop: 20, marginBottom:20}}> Preencha os campos abaixo: </Text>
 
-      <Text style={{ color: 'black', fontSize: 18, fontWeight: 'bold', marginTop: 20, marginBottom:20}}> Preencha os campos abaixo: </Text>
+        <Controller
+  control={control}
+  render={({ field }) => (
+    <Input
+      containerStyle={{ width: "85%" }}
+      style={{ color: "black", fontSize: 15}}
+      placeholder='Digite uma bio para o perfil. Ex:tipos de serviços ofercidos'
+      onChangeText={field.onChange}
+      value={field.value}
+      maxLength={500}
+      multiline
+      numberOfLines={4}
+    />
+  )}
+  name="bio"
+/>
+
+        <Controller
+          control={control}
+          rules={{ required: true }}
+          render={({ field }) => (
+            <Input
+              containerStyle={{ width: "85%" }}
+              style={{ color: "black", fontSize: 15}}
+              placeholder='CPF ou CPNJ'
+              onChangeText={field.onChange}
+              value={field.value}
+            />
+          )}
+          name="cpf"
+        />
+        {errors.cpf && <Text style={{ color: 'red', marginTop: -15, marginLeft: 12 }}>Preenchimento obrigatório!</Text>}
+
+        <Controller
+          control={control}
+          render={({ field }) => (
+            <Input
+              containerStyle={{ width: "85%" }}
+              style={{ color: "black", fontSize: 15}}
+              placeholder='Número CREF ou CRN (opcional)'
+              onChangeText={field.onChange}
+              value={field.value}
+            />
+          )}
+          name="numeroCref"
+        />
+
+        <Controller
+        control={control}
+        rules={{ required: true }}
+        render={({ field }) => (
+          <Input
+            containerStyle={{ width: "85%" }}
+            style={{ color: "black", fontSize: 15}}
+            placeholder='Dias e horários de funcionamento'
+            onChangeText={field.onChange}
+            value={field.value}/>)}
+        name="funcionamento"/>
+      {errors.funcionamento && <Text style={{ color: 'red', marginTop: -15,marginLeft: 12, }}>Preenchimento obrigatório!</Text>}
 
       <Controller
         control={control}
@@ -88,30 +146,11 @@ const ConfigAluno = ({ navigation }) => {
           <Input
             containerStyle={{ width: "85%" }}
             style={{ color: "black", fontSize: 15}}
-            placeholder='CPF'
+            placeholder='Valor mensal'
             onChangeText={field.onChange}
-            value={field.value}
-          />
-        )}
-        name="cpf"
-      />
-      {errors.cpf && <Text style={{ color: 'red', marginTop: -15, marginLeft: 12, }}>CPF obrigatório!</Text>}
-
-      <Controller
-        control={control}
-        rules={{ required: true }}
-        render={({ field }) => (
-          <Input
-            containerStyle={{ width: "85%" }}
-            style={{ color: "black", fontSize: 15}}
-            placeholder='Data de nascimento'
-            onChangeText={field.onChange}
-            value={field.value}
-          />
-        )}
-        name="nascimento"
-      />
-      {errors.nascimento && <Text style={{ color: 'red', marginTop: -15, marginLeft: 12, }}>Data de nascimento obrigatório!</Text>}
+            value={field.value}/>)}
+        name="valor"/>
+      {errors.valor && <Text style={{ color: 'red', marginTop: -15,marginLeft: 12, }}>Preenchimento obrigatório!</Text>}
 
       <Controller
         control={control}
@@ -209,4 +248,4 @@ const ConfigAluno = ({ navigation }) => {
   );
 };
 
-export default ConfigAluno;
+export default ConfigPerNutri;
