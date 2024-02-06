@@ -13,6 +13,7 @@ import HomePersonal from '../screens/private/Home/HomePersonal';
 import ConfigAluno from '../screens/features/SettingsProfile/SettingsAluno';
 import SettingsProfile from '../screens/features/SettingsProfile';
 import CheckInAluno from '../screens/core/Components/checkinAluno';
+import ConfigAcademia from '../../src/screens/features/SettingsProfile/SettingsAcademia';
 
 
 const Stack = createNativeStackNavigator();
@@ -32,6 +33,8 @@ function Routes() {
         <Stack.Screen name="ConfigAluno" component={ConfigAluno} />
         <Stack.Screen name="SettingsProfile" component={SettingsProfile} />
         <Stack.Screen name="CheckInAluno" component={CheckInAluno} />
+        <Stack.Screen name="ConfigAcademia" component={ConfigAcademia} />
+
 
       </Stack.Navigator> 
     </NavigationContainer>

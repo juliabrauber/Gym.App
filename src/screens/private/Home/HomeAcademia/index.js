@@ -4,6 +4,12 @@ import { View } from 'react-native';
 import { Avatar, Box, FlatList, Pressable } from 'native-base';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
+import styles from './style';
+import Storys from '../../../core/Components/Storys';
+import Feed from '../../../core/Components/Feed';
+import AgendAluno from '../../../core/Components/agendAluno';
+
+
 const HomeAcademia = () => { 
   const data = [{
     id:'1',

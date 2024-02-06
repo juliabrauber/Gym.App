@@ -4,8 +4,6 @@ import { Button, Input, Text } from '@rneui/themed';
 import { useForm, Controller } from 'react-hook-form';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
-
-
 const ConfigAcademia = ({ navigation }) => {
   const { control, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
@@ -22,7 +20,6 @@ const ConfigAcademia = ({ navigation }) => {
 
   const [dadosSalvos, setDadosSalvos] = useState(false);
   
-
   const handleConcluir = (data) => {
     if (data.cpf ==='' || data.cep ==='' || data.rua === ''|| data.cidade ==='' || data.numero ==='' || 
     data.uf === ''|| data.funcionamento ==='' || data.valor ==='') { 
@@ -34,37 +31,40 @@ const ConfigAcademia = ({ navigation }) => {
   };
 
   return (
-
     <KeyboardAwareScrollView>
-    <View style={{ flex: 1, marginLeft: 15, }}>
-    
-      <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', marginTop: 120, marginBottom: 15 }}> Academia </Text>
-      <Text style={{ color: 'black', fontSize: 15, fontWeight: 'bold', marginTop: 40, marginBottom:20}}> Preencha os campos abaixo: </Text>
+      <View style={{ flex: 1, marginLeft: 15 }}>
+        <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', marginTop: 120, marginBottom: 15 }}> Academia </Text>
+        <Text style={{ color: 'black', fontSize: 15, fontWeight: 'bold', marginTop: 40, marginBottom:20}}> Preencha os campos abaixo: </Text>
 
-      <Controller
-        control={control}
-        rules={{ required: true }}
-        render={({ field }) => (
-          <Input
-            containerStyle={{ width: "85%" }}
-            style={{ color: "black", fontSize: 15}}
-            placeholder='CPF ou CPNJ'
-            onChangeText={field.onChange}
-            value={field.value}
-          />
-        )}
-        name="cpf"
-      />
-      {errors.cpf && <Text style={{ color: 'red', marginTop: -15, marginLeft: 12, }}>Preenchimento obrigatório!</Text>}
+        <Controller
+          control={control}
+          rules={{ required: true }}
+          render={({ field }) => (
+            <Input
+              containerStyle={{ width: "85%" }}
+              style={{ color: "black", fontSize: 15}}
+              placeholder='CPF ou CPNJ'
+              onChangeText={field.onChange}
+              value={field.value}
+            />
+          )}
+          name="cpf"
+        />
+        {errors.cpf && <Text style={{ color: 'red', marginTop: -15, marginLeft: 12 }}>Preenchimento obrigatório!</Text>}
 
-    
-          <Input
-            containerStyle={{ width: "85%" }}
-            style={{ color: "black", fontSize: 15}}
-            placeholder='Número CREF (opcional)'
-            onChangeText={field.onChange}
-            value={field.value}
-          />
+        <Controller
+          control={control}
+          render={({ field }) => (
+            <Input
+              containerStyle={{ width: "85%" }}
+              style={{ color: "black", fontSize: 15}}
+              placeholder='Número CREF (opcional)'
+              onChangeText={field.onChange}
+              value={field.value}
+            />
+          )}
+          name="numeroCref"
+        />
 
         <Controller
         control={control}

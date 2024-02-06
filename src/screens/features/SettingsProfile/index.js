@@ -10,8 +10,8 @@ const SettingsProfile = () => {
     navigation.navigate("Login");
   };
 
-  const handleNavConfigAluno = () => {
-    navigation.navigate("ConfigAluno");
+  const handleNavConfigAcademia = () => {
+    navigation.navigate("ConfigAcademia");
   };
 
   return (
@@ -19,7 +19,7 @@ const SettingsProfile = () => {
       <View style={styles.olaTexto}>
         </View>
       <Button
-        onPress={handleNavConfigAluno}
+        onPress={handleNavConfigAcademia}
         containerStyle={{ width: "100%", marginTop: 40 }}
         buttonStyle={{ borderColor: 'transparent', borderRadius: 30 }}
         titleStyle={{ color: "#1CA69E" }}
