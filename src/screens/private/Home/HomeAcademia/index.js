@@ -67,7 +67,7 @@ const HomeAcademia = () => {
             inputStyle={{ color: 'black' }}
           />
   
-          <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', marginTop: 40, marginLeft: 20, }}> Sugestões </Text>
+          <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', marginTop: 40, marginLeft: 20, }}> Próximos Clientes </Text>
   
           <Box paddingX={4}  marginTop={2}>
               <FlatList
@@ -78,7 +78,7 @@ const HomeAcademia = () => {
               />
             </Box>
   
-          <Text style={{ color: 'black', fontSize: 18, fontWeight: 'bold', marginTop: 20, marginLeft: 20, }}> Próximos Clientes </Text>
+          <Text style={{ color: 'black', fontSize: 18, fontWeight: 'bold', marginTop: 20, marginLeft: 20, }}> Sugestões </Text>
   
           <Box paddingX={4}  marginTop={15}>
               <FlatList

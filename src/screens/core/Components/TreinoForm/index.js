@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import {Modal, View } from 'react-native';
 import { Button, Input, Text } from '@rneui/themed';
 import RNPickerSelect from 'react-native-picker-select';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import DateTimePicker from '@react-native-community/datetimepicker';
+import { AntDesign } from '@expo/vector-icons';
 
 const TreinoForm = ({ navigation }) => {
   const [diaSemana, setDiaSemana] = useState('');
@@ -64,10 +66,95 @@ const TreinoForm = ({ navigation }) => {
     setMensagemSucesso(true);
   };
 
+  const [showHourPicker, setShowHourPicker] = useState(false);
+  const [showMinutePicker, setShowMinutePicker] = useState(false);
+  const [selectedTime, setSelectedTime] = useState(null);
+  const [selectedHour, setSelectedHour] = useState(null);
+  const [selectedMinute, setSelectedMinute] = useState(null);
+
+  const handleTimeChange = (event, selectedDate) => {
+    setShowHourPicker(false);
+    setShowMinutePicker(false);
+    if (selectedDate) {
+      const hour = selectedDate.getHours();
+      const minute = selectedDate.getMinutes();
+      setSelectedTime(selectedDate);
+      setSelectedHour(hour);
+      setSelectedMinute(minute);
+    }
+  };
+
+  const handleHourSelection = () => {
+    setShowHourPicker(true);
+  };
+
+  const handleMinuteSelection = () => {
+    setShowMinutePicker(true);
+  };
+
+
   return (
-    <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1, paddingHorizontal: 20, paddingTop: 50 }}>
+    <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1, paddingHorizontal: 20, paddingTop: 40 }}>
+      <Button
+          onPress={() => { navigation.navigate("Home"); }}
+          containerStyle={{ width: '50%', marginTop: 10, paddingBottom:2, alignItems:'flex-start' }}
+          buttonStyle={{ borderColor: 'transparent', borderRadius: 30, backgroundColor: "#1CA69E" }}
+          icon={<AntDesign name="arrowleft" size={20} color="white" />}
+          type="outline"
+        />
       <Text style={{ fontSize: 23, textAlign: 'center', paddingBottom: 10, fontWeight: 'bold' }}>Cadastro de treino</Text>
       <Text style={{ fontSize: 18, textAlign: 'center', paddingBottom: 10, fontWeight: 'bold' }}>Aluno:</Text>
+
+      <Text style={{ fontSize: 18, paddingTop:20, }}>Horário do treino:</Text>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Button title="Hora" onPress={handleHourSelection} containerStyle={{ marginTop: 5}} buttonStyle={{ borderColor: 'transparent', borderRadius: 5, backgroundColor: "#1CA69E"}}titleStyle={{ color: '#ffffff', fontSize:15 }} />
+        <Text>{selectedHour !== null ? `Hora: ${selectedHour}` : 'Nenhuma hora selecionada'}</Text>
+      </View>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Button title="Minuto" onPress={handleMinuteSelection} containerStyle={{ marginTop: 5}} buttonStyle={{ borderColor: 'transparent', borderRadius: 5, backgroundColor: "#1CA69E"}}titleStyle={{ color: '#ffffff', fontSize:15 }}/>
+        <Text>{selectedMinute !== null ? `Minuto: ${selectedMinute}` : 'Nenhum minuto selecionado'}</Text>
+      </View>
+
+      {showHourPicker && (
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={showHourPicker}
+        >
+          <View style={{ flex: 1, justifyContent: 'flex-end' }}>
+            <View style={{ backgroundColor: '#7FD9D2', padding: 20 }}>
+              <DateTimePicker
+                value={selectedTime || new Date()}
+                mode="time"
+                is24Hour={true}
+                display="default"
+                onChange={handleTimeChange}
+              />
+            </View>
+          </View>
+        </Modal>
+      )}
+
+      {showMinutePicker && (
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={showMinutePicker}
+        >
+          <View style={{ flex: 1, justifyContent: 'flex-end' }}>
+            <View style={{ backgroundColor: '#7FD9D2', padding: 30 }}>
+              <DateTimePicker
+                value={selectedTime || new Date()}
+                mode="time"
+                is24Hour={true}
+                display="default"
+                onChange={handleTimeChange}
+                minuteInterval={1}
+              />
+            </View>
+          </View>
+        </Modal>
+      )}
 
       <Text style={{ paddingTop: 20, fontSize:18 }}>Dia da Semana:</Text>
       <RNPickerSelect
@@ -159,14 +246,6 @@ const TreinoForm = ({ navigation }) => {
         </Text>
          )}
 
-        <Button
-          onPress={() => { navigation.navigate("Home"); }}
-          containerStyle={{ width: '50%', marginTop: 5, paddingBottom:20 }}
-          buttonStyle={{ borderColor: 'transparent', borderRadius: 30, backgroundColor: "#1CA69E" }}
-          titleStyle={{ color: '#ffffff', fontSize:15 }}
-          title="Voltar"
-          type="outline"
-        />
       </View>
     </KeyboardAwareScrollView>
   );
