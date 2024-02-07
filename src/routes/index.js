@@ -14,6 +14,7 @@ import ConfigAluno from '../screens/features/SettingsProfile/SettingsAluno';
 import SettingsProfile from '../screens/features/SettingsProfile';
 import CheckInAluno from '../screens/core/Components/checkinAluno';
 import ConfigAcademia from '../../src/screens/features/SettingsProfile/SettingsAcademia';
+import TreinoForm from '../../src/screens/core/Components/TreinoForm';
 
 
 const Stack = createNativeStackNavigator();
@@ -34,6 +35,7 @@ function Routes() {
         <Stack.Screen name="SettingsProfile" component={SettingsProfile} />
         <Stack.Screen name="CheckInAluno" component={CheckInAluno} />
         <Stack.Screen name="ConfigAcademia" component={ConfigAcademia} />
+        <Stack.Screen name="TreinoForm" component={TreinoForm} />
 
 
       </Stack.Navigator> 

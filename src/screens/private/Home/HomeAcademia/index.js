@@ -7,7 +7,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import styles from './style';
 import Storys from '../../../core/Components/Storys';
 import Feed from '../../../core/Components/Feed';
-import AgendAluno from '../../../core/Components/agendAluno';
+import TreinoAluno from '../../../core/Components/treinoAluno';
 
 
 const HomeAcademia = () => { 
@@ -73,7 +73,7 @@ const HomeAcademia = () => {
               <FlatList
               horizontal={true}
               data={data}
-              renderItem={({ item}) => <AgendAluno data={item}/>}
+              renderItem={({ item}) => <TreinoAluno data={item}/>}
               showsHorizontalScrollIndicator={false}
               />
             </Box>
