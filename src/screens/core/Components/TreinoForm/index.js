@@ -14,11 +14,18 @@ const TreinoForm = ({ navigation }) => {
   const [tempoCardio, setTempoCardio] = useState('5');
   const [treinos, setTreinos] = useState([]);
   const [editandoIndex, setEditandoIndex] = useState(null);
+  const [objetivo, setObjetivo] = useState('');
+  const [showHourPicker, setShowHourPicker] = useState(false);
+  const [showMinutePicker, setShowMinutePicker] = useState(false);
+  const [selectedTime, setSelectedTime] = useState(null);
+  const [selectedHour, setSelectedHour] = useState(null);
+  const [selectedMinute, setSelectedMinute] = useState(null);
 
   const diasSemana = ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado', 'Domingo'];
   const aparelhosMusculacao = ['Supino', 'Leg Press', 'Agachamento', 'Remada', 'Puxada Alta', 'Rosca Direta', 'Tríceps Pulley', 'Elevação Lateral', 'Desenvolvimento'];
   const aparelhosCardio = ['Esteira', 'Bicicleta Ergométrica', 'Elíptico', 'Transport', 'Remo'];
-
+  const objetivos = ['Emagrecimento', 'Hipertrofia', 'Ganho de peso', 'Condicionamento físico geral', 'Aumento da resistência', 'Flexibilidade', 'Força muscular', 'Performance esportiva', 'Equilíbrio e coordenação', 'Bem-estar mental'];
+ 
   const adicionarTreino = () => {
     if (editandoIndex !== null) {
       const novosTreinos = [...treinos];
@@ -66,12 +73,6 @@ const TreinoForm = ({ navigation }) => {
     setMensagemSucesso(true);
   };
 
-  const [showHourPicker, setShowHourPicker] = useState(false);
-  const [showMinutePicker, setShowMinutePicker] = useState(false);
-  const [selectedTime, setSelectedTime] = useState(null);
-  const [selectedHour, setSelectedHour] = useState(null);
-  const [selectedMinute, setSelectedMinute] = useState(null);
-
   const handleTimeChange = (event, selectedDate) => {
     setShowHourPicker(false);
     setShowMinutePicker(false);
@@ -92,7 +93,6 @@ const TreinoForm = ({ navigation }) => {
     setShowMinutePicker(true);
   };
 
-
   return (
     <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1, paddingHorizontal: 20, paddingTop: 40 }}>
       <Button
@@ -104,6 +104,17 @@ const TreinoForm = ({ navigation }) => {
         />
       <Text style={{ fontSize: 23, textAlign: 'center', paddingBottom: 10, fontWeight: 'bold' }}>Cadastro de treino</Text>
       <Text style={{ fontSize: 18, textAlign: 'center', paddingBottom: 10, fontWeight: 'bold' }}>Aluno:</Text>
+
+      <Text style={{ fontSize: 18, paddingTop:20, }}>Objetivo:</Text>
+      <RNPickerSelect
+        placeholder={{ label: 'Selecione o objetivo', value: null }}
+        items={[
+          { label: 'Selecione o objetivo', value: null },
+          ...objetivos.map((objetivo, index) => ({ label: objetivo, value: objetivo }))
+        ]}
+        onValueChange={(value) => setObjetivo(value)}
+        value={objetivo}
+      />
 
       <Text style={{ fontSize: 18, paddingTop:20, }}>Horário do treino:</Text>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -201,7 +212,7 @@ const TreinoForm = ({ navigation }) => {
         value={repeticoes}
       />
       {editandoIndex !== null ? (
-        <Button title="Salvar Treino Editado" onPress={salvarTreinoEditado} buttonStyle={{ borderColor: 'transparent', borderRadius: 5, backgroundColor: "#1CA69E", height:35, }} containerStyle={{ marginTop: 20, width: '50%', paddingVertical: 20 }} titleStyle={{ color: '#ffffff', fontSize:17,  textAlign:'center' }}/>
+        <Button title="Salvar Treino Editado" onPress={salvarTreinoEditado} buttonStyle={{ borderColor: 'transparent', borderRadius: 5, backgroundColor: "#1CA69E", height:35, }} containerStyle={{ marginTop: 20, width: '55%', paddingVertical: 20 }} titleStyle={{ color: '#ffffff', fontSize:17,  textAlign:'center' }}/>
       ) : (
         <Button title="Adicionar Treino" onPress={adicionarTreino} buttonStyle={{ borderColor: 'transparent', borderRadius: 5, backgroundColor: "#1CA69E", height:35, }} containerStyle={{ marginTop: 20, width: '50%', paddingVertical: 20 }} titleStyle={{ color: '#ffffff', fontSize:17,  textAlign:'center' }} />
       )}

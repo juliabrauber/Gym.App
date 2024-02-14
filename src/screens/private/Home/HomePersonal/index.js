@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
-import { SearchBar, Text } from '@rneui/themed';
+import { Button, SearchBar, Text } from '@rneui/themed';
 import { View } from 'react-native';
 import { Avatar, Box, FlatList, Pressable } from 'native-base';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
-import styles from  './styles';
+import styles from './styles';
 import Storys from '../../../core/Components/Storys';
-import Feed from '../../../core/Components/Feed';
-import AgendAluno from '../../../core/Components/agendAluno';
+import TreinoAluno from '../../../core/Components/treinoAluno';
 
 
 const HomePersonal = () => { 
@@ -67,29 +66,46 @@ const HomePersonal = () => {
             inputStyle={{ color: 'black' }}
           />
   
-          <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', marginTop: 40, marginLeft: 20, }}> Próximos Clientes </Text>
+          <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', marginTop: 40, marginLeft: 20, }}> Realizar novas avaliações </Text>
   
           <Box paddingX={4}  marginTop={2}>
               <FlatList
               horizontal={true}
               data={data}
-              renderItem={({ item}) => <AgendAluno data={item}/>}
+              renderItem={({ item}) => <TreinoAluno data={item}/>}
               showsHorizontalScrollIndicator={false}
               />
             </Box>
   
-          <Text style={{ color: 'black', fontSize: 18, fontWeight: 'bold', marginTop: 20, marginLeft: 20, }}> Financeiro </Text>
-  
-          <Box paddingX={4}  marginTop={15}>
+          <Text style={{ color: 'black', fontSize: 18, fontWeight: 'bold', marginTop: 20, marginLeft: 20, }}> Próximos clientes </Text>
+          
+          <Box paddingX={4}  marginTop={2}>
               <FlatList
               horizontal={true}
               data={data}
-              renderItem={({ item}) => <Feed data={item}/>}
+              renderItem={({ item}) => <TreinoAluno data={item}/>}
               showsHorizontalScrollIndicator={false}
               />
             </Box>
+          
   
-          <Text style={{ color: 'black', fontSize: 18, fontWeight: 'bold', marginTop: 40, marginLeft: 20, }}> Avaliações pendentes </Text>
+          <Text style={{ color: 'black', fontSize: 18, fontWeight: 'bold', marginTop: 40, marginLeft: 20, }}> Dados Gerais </Text>
+
+          <View style={{  marginTop: 40, marginLeft: 20, flexDirection:'row' }}>
+          <Button 
+       containerStyle={{width:"40%", marginTop:5, marginLeft: 20, paddingBottom: 20}}
+        buttonStyle={{ borderColor:'transparent',  borderRadius: 15, backgroundColor:"#1CA69E"  }}
+        titleStyle={{ color: "#ffffff", fontSize:15 }}
+        title="Financeiro" 
+        type="outline" />
+
+        <Button 
+       containerStyle={{width:"40%", marginTop:5, marginLeft: 20, paddingBottom: 20}}
+        buttonStyle={{ borderColor:'transparent',  borderRadius: 15, backgroundColor:"#1CA69E"  }}
+        titleStyle={{ color: "#ffffff", fontSize:15 }}
+        title="Alunos" 
+        type="outline" />
+          </View>
   
        </View>
     </KeyboardAwareScrollView>
