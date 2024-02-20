@@ -112,6 +112,7 @@ const TreinoForm = ({ navigation }) => {
       <Text style={{ paddingTop: 20, fontSize: 18 }}>Dia da Semana:</Text>
       <RNPickerSelect
         placeholder={{ label: 'Selecione o dia da semana', value: '' }}
+        useNativeAndroidPickerStyle ={ false }
         items={diasSemana.map((dia, index) => ({ label: dia, value: dia }))}
         onValueChange={(value) => setDiaSemana(value)}
         value={diaSemana}
@@ -119,6 +120,7 @@ const TreinoForm = ({ navigation }) => {
       <Text style={{ paddingTop: 3, fontSize: 18 }}>Aparelho:</Text>
       <RNPickerSelect
         placeholder={{ label: 'Selecione o aparelho', value: '' }}
+        useNativeAndroidPickerStyle ={ false }
         items={[
           { label: '--- Aparelhos de Musculação ---', value: '', disabled: true },
           ...aparelhosMusculacao.map((aparelho, index) => ({ label: aparelho, value: aparelho })),
@@ -133,6 +135,7 @@ const TreinoForm = ({ navigation }) => {
           <Text style={{ paddingTop: 3, fontSize: 18 }}>Tempo (minutos):</Text>
           <RNPickerSelect
             placeholder={{ label: 'Selecione o tempo', value: '' }}
+            useNativeAndroidPickerStyle ={ false }
             items={[5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60].map((minutos, index) => ({ label: `${minutos} min`, value: `${minutos}` }))}
             onValueChange={(value) => setTempoCardio(value)}
             value={tempoCardio}
@@ -142,6 +145,7 @@ const TreinoForm = ({ navigation }) => {
       <Text style={{ paddingTop: 3, fontSize: 18 }}>Série:</Text>
       <RNPickerSelect
         placeholder={{ label: 'Selecione a série', value: '' }}
+        useNativeAndroidPickerStyle ={ false }
         items={[...Array(10)].map((_, index) => ({ label: `${index + 1}`, value: `${index + 1}` }))}
         onValueChange={(value) => setSerie(value)}
         value={serie}
@@ -149,14 +153,15 @@ const TreinoForm = ({ navigation }) => {
       <Text style={{ paddingTop: 3, fontSize: 18 }}>Repetições:</Text>
       <RNPickerSelect
         placeholder={{ label: 'Selecione o número de repetições', value: '' }}
+        useNativeAndroidPickerStyle ={ false }
         items={[...Array(50)].map((_, index) => ({ label: `${index + 1}`, value: `${index + 1}` }))}
         onValueChange={(value) => setRepeticoes(value)}
         value={repeticoes}
       />
       {editandoIndex !== '' && editandoIndex >= 0 && editandoIndex < treinos.length ? (
-        <Button title="Salvar Treino Editado" onPress={salvarTreinoEditado} buttonStyle={{ borderColor: 'transparent', borderRadius: 5, backgroundColor: "#1CA69E", height: 35, }} containerStyle={{ marginTop: 20, width: '55%', paddingVertical: 20 }} titleStyle={{ color: '#ffffff', fontSize: 17, textAlign: 'center' }} />
+        <Button title="Salvar Treino Editado" onPress={salvarTreinoEditado} buttonStyle={{ borderColor: 'transparent', borderRadius: 5, backgroundColor: "#1CA69E", height: 35, }} containerStyle={{ marginTop: 20, width: '55%', paddingVertical: 20 }} titleStyle={{ color: '#ffffff', fontSize: 16, textAlign: 'center' }} />
       ) : (
-        <Button title="Adicionar Treino" onPress={adicionarTreino} buttonStyle={{ borderColor: 'transparent', borderRadius: 5, backgroundColor: "#1CA69E", height: 35, }} containerStyle={{ marginTop: 20, width: '50%', paddingVertical: 20 }} titleStyle={{ color: '#ffffff', fontSize: 17, textAlign: 'center' }} />
+        <Button title="Adicionar Treino" onPress={adicionarTreino} buttonStyle={{ borderColor: 'transparent', borderRadius: 5, backgroundColor: "#1CA69E", height: 35, }} containerStyle={{ marginTop: 20, width: '50%', paddingVertical: 20 }} titleStyle={{ color: '#ffffff', fontSize: 16, textAlign: 'center' }} />
       )}
 
       {treinos.map((treino, index) => (
@@ -176,15 +181,15 @@ const TreinoForm = ({ navigation }) => {
           </View>
         </View>
       ))}
-      <View style={{ paddingTop: 40, alignItems: 'center' }}>
+      <View style={{ paddingTop: 10, alignItems: 'center' }}>
         <Input
-          containerStyle={{ width: '100%' }}
+          containerStyle={{ width: '85%' }}
           style={{ color: 'black', fontSize: 15 }}
           placeholder='Observação para realização de treino'
           onChangeText={(text) => console.log(text)}
           maxLength={1000}
           multiline
-          numberOfLines={8}
+          numberOfLines={4}
         />
         <Button onPress={() => { salvarTreino(); setTimeout(() => setMensagemSucesso(false), 2000); }}
           containerStyle={{ width: '70%', marginTop: 15, paddingBottom: 20 }}
