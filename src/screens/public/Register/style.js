@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
         height:175,
     },
     selectStyles:{
-    flex:1, width: '80%', alignItems: 'center', marginBottom:33, justifyContent: 'center',
+    flex:1, width: '80%', marginBottom:30,
     },
     
 })

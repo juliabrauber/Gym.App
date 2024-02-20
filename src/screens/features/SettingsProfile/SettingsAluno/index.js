@@ -4,6 +4,7 @@ import {Button, Input, Text } from '@rneui/themed';
 import { useForm, Controller } from 'react-hook-form';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import * as ImagePicker from 'expo-image-picker';
+import { AntDesign } from '@expo/vector-icons';
 
 
 const ConfigAluno = ({ navigation }) => {
@@ -51,8 +52,15 @@ const ConfigAluno = ({ navigation }) => {
   return (
 
     <KeyboardAwareScrollView>
+      <Button
+        onPress={() => { navigation.navigate("Home"); }}
+        containerStyle={{ width: '50%', marginTop:40, marginLeft:10, alignItems: 'flex-start' }}
+        buttonStyle={{ borderColor: 'transparent', borderRadius: 30, backgroundColor: "#1CA69E" }}
+        icon={<AntDesign name="arrowleft" size={20} color="white" />}
+        type="outline"
+      />
      <View style={{ flex: 1, alignItems: 'center' }}>
-        <View style={{ alignItems: 'center', marginTop: 60 }}>
+        <View style={{ alignItems: 'center' }}>
         <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', marginBottom:10}}>
             Aluno
           </Text>
@@ -198,7 +206,7 @@ const ConfigAluno = ({ navigation }) => {
 
       <Button
         onPress={() => { navigation.navigate("Home"); }}
-        containerStyle={{ width: "85%", marginTop: 30 }}
+        containerStyle={{ width: "85%", marginTop: 30,  paddingBottom:20}}
         buttonStyle={{ borderColor: 'transparent', borderRadius: 30, backgroundColor: "#1CA69E" }}
         titleStyle={{ color: '#ffffff' }}
         title="Voltar"

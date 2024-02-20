@@ -157,7 +157,9 @@ const Register = () => {
           render={({ field }) => (
             <View style={styles.selectStyles}>
               <RNPickerSelect
-                placeholder={{ label: 'Selecione uma opção de perfil', value: null, textColor: "#86939e" }}
+                placeholder={{ label: 'Selecione uma opção de perfil', value: null}}
+                textStyle={{
+                    color: '#7c8792',}}
                 useNativeAndroidPickerStyle ={ false }
                 onValueChange={(value) => field.onChange(value)}
                 items={[
@@ -168,11 +170,11 @@ const Register = () => {
                 ]}
                 style={{
                   inputIOS: {
-                    padding: 7, flex: 1, color: 'black', borderBottomWidth: 1, borderColor: "#86939e", width: '100%',
+                    padding: 7, flex: 1, color: 'black', borderBottomWidth: 1, borderColor: "#7c8792", width: '100%',
                     textAlign: 'left', fontSize: 18,
                   },
                   inputAndroid: {
-                    padding: 7, flex: 1, color: 'black', borderBottomWidth: 1, borderColor: "#86939e", width: '100%',
+                    padding: 7, flex: 1, color: 'black', borderBottomWidth: 1, borderColor: "#7c8792", width: '100%',
                     textAlign: 'left', fontSize: 18,
                   },
                 }}

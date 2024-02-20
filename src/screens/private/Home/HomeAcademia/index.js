@@ -91,7 +91,7 @@ const HomeAcademia = () => {
   
           <Text style={{ color: 'black', fontSize: 18, fontWeight: 'bold', marginTop: 40, marginLeft: 20, }}> Dados Gerais </Text>
 
-          <View style={{  marginTop: 40, marginLeft: 20, flexDirection:'row' }}>
+          <View style={{  marginTop: 20, marginLeft: 20, flexDirection:'row' }}>
           <Button 
        containerStyle={{width:"40%", marginTop:5, marginLeft: 20, paddingBottom: 20}}
         buttonStyle={{ borderColor:'transparent',  borderRadius: 15, backgroundColor:"#1CA69E"  }}

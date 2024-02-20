@@ -31,7 +31,14 @@ const TreinoForm = ({ navigation }) => {
       setTreinos([...treinos, { diaSemana, aparelho, serie, repeticoes, tempoCardio }]);
     }
     resetForm();
+    setEditandoIndex('');
   };
+  
+  const salvarTreinoEditado = () => {
+    adicionarTreino();
+    setEditandoIndex('');
+  };
+
   const editarTreino = (index) => {
     const treino = treinos[index];
     setDiaSemana(treino.diaSemana);
@@ -40,11 +47,6 @@ const TreinoForm = ({ navigation }) => {
     setRepeticoes(treino.repeticoes);
     setTempoCardio(treino.tempoCardio);
     setEditandoIndex(index);
-  };
-
-  const salvarTreinoEditado = () => {
-    adicionarTreino();
-    setEditandoIndex(null);
   };
 
   const removerTreino = (index) => {
@@ -76,10 +78,10 @@ const TreinoForm = ({ navigation }) => {
   };
 
   return (
-    <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1, paddingHorizontal: 20, paddingTop: 40 }}>
+    <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1, paddingHorizontal: 20, backgroundColor: '#f4f4f4' }}>
       <Button
         onPress={() => { navigation.navigate("Home"); }}
-        containerStyle={{ width: '50%', marginTop: 10, paddingBottom: 2, alignItems: 'flex-start' }}
+        containerStyle={{ width: '50%', marginTop:40, paddingBottom: 2, alignItems: 'flex-start' }}
         buttonStyle={{ borderColor: 'transparent', borderRadius: 30, backgroundColor: "#1CA69E" }}
         icon={<AntDesign name="arrowleft" size={20} color="white" />}
         type="outline"
@@ -183,7 +185,7 @@ const TreinoForm = ({ navigation }) => {
       ))}
       <View style={{ paddingTop: 10, alignItems: 'center' }}>
         <Input
-          containerStyle={{ width: '85%' }}
+          containerStyle={{ width: '100%' }}
           style={{ color: 'black', fontSize: 15 }}
           placeholder='Observação para realização de treino'
           onChangeText={(text) => console.log(text)}
@@ -191,18 +193,18 @@ const TreinoForm = ({ navigation }) => {
           multiline
           numberOfLines={4}
         />
-        <Button onPress={() => { salvarTreino(); setTimeout(() => setMensagemSucesso(false), 2000); }}
+        {mensagemSucesso && (
+        <Text style={{ fontSize: 15, color: 'green', textAlign: 'center', marginTop: 2, marginBottom: 5 }}>
+        Treino salvo com sucesso!
+        </Text>
+        )}
+        <Button onPress={() => { salvarTreino(); setTimeout(() => setMensagemSucesso(false), 3000); }}
           containerStyle={{ width: '70%', marginTop: 15, paddingBottom: 20 }}
           buttonStyle={{ borderColor: 'transparent', borderRadius: 30, backgroundColor: "#1CA69E" }}
           titleStyle={{ color: '#ffffff' }}
           title="Salvar treino"
           type="outline"
         />
-        {mensagemSucesso && (
-          <Text style={{ fontSize: 17, color: 'green', textAlign: 'center', marginTop: 5, marginBottom: 15 }}>
-            Treino salvo com sucesso!
-          </Text>
-        )}
 
       </View>
     </KeyboardAwareScrollView>
