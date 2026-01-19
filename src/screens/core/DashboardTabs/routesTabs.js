@@ -2,7 +2,7 @@ import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AntDesign, Entypo, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 
-import HomeAluno from '../../private/Home/HomeAluno';
+import HomeAcademia from '../../private/Home/HomeAcademia';
 import Messages from '../../features/Messages';
 import Notifications from '../../features/Notifications';
 import SettingsProfile from '../../features/SettingsProfile';
@@ -24,7 +24,7 @@ function RoutesTabs() {
       >
         <Tab.Screen
           name="Início"
-          component={HomeAluno}
+          component={HomeAcademia}
           options={{
             tabBarLabel:'',
             tabBarIcon: ({ size, color }) => (

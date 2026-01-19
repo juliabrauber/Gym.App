@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Gym.App",
-    "slug": "Gym.App",
+    "slug": "Gym-App",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -15,7 +15,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "Precisamos de permissão para acessar a câmera",
+        "NSPhotoLibraryUsageDescription": "Precisamos de permissão para acessar a biblioteca de fotos"
+      }
     },
     "android": {
       "adaptiveIcon": {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Image, View, TouchableOpacity } from 'react-native'
+import { Image, View, TouchableOpacity, Platform } from 'react-native';
 import { Button, Input, Text } from '@rneui/themed';
 import { useNavigation } from '@react-navigation/native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
@@ -10,11 +10,10 @@ import RNPickerSelect from 'react-native-picker-select';
 import styles from "../Register/style";
 
 const Register = () => {
-
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   const handleNavLogin = () => {
     navigation.navigate("Login");
-};
+  };
   const [hideSenha, setHideSenha] = useState(true);
   const [hideConfirmeSenha, setHideConfirmeSenha] = useState(true);
 
@@ -158,20 +157,24 @@ const Register = () => {
           render={({ field }) => (
             <View style={styles.selectStyles}>
               <RNPickerSelect
-                placeholder={{ label: 'Selecione uma opção de perfil', value: null, textColor: "#86939e" }}
+                placeholder={{ label: 'Selecione uma opção de perfil', value: null}}
+                textStyle={{
+                    color: '#7c8792',}}
+                useNativeAndroidPickerStyle ={ false }
                 onValueChange={(value) => field.onChange(value)}
                 items={[
                   { label: 'Academia', value: 'Academia' },
                   { label: 'Aluno', value: 'Aluno' },
                   { label: 'Nutricionista', value: 'Nutricionista' },
                   { label: 'Personal', value: 'Personal' },
-                ]} style={{
+                ]}
+                style={{
                   inputIOS: {
-                    padding: 7, flex: 1, color: "#000000", borderBottomWidth: 1, borderColor: "#86939e", width: '100%',
+                    padding: 7, flex: 1, color: 'black', borderBottomWidth: 1, borderColor: "#7c8792", width: '100%',
                     textAlign: 'left', fontSize: 18,
                   },
                   inputAndroid: {
-                    padding: 7, flex: 1, color: "#000000", borderBottomWidth: 1, borderColor: "#86939e", width: '100%',
+                    padding: 7, flex: 1, color: 'black', borderBottomWidth: 1, borderColor: "#7c8792", width: '100%',
                     textAlign: 'left', fontSize: 18,
                   },
                 }}
@@ -184,15 +187,16 @@ const Register = () => {
           <Text style={{ color: 'red', marginTop: -25 }}>Seleção obrigatória!</Text>
         )}
 
+
         <Button onPress={() => {handleNavLogin();}}
-          containerStyle={{width:"100%", marginTop:40}}
+          containerStyle={{width:'85%', marginTop:40}}
           buttonStyle={{ borderColor:'transparent',  borderRadius: 30, backgroundColor:"#1CA69E"  }}
           titleStyle={{ color: "#ffffff" }}
           title="Retornar a página inicial" 
           type="outline" />
 
         <Button onPress={() => handleSubmit(handleSignIn)()}
-          containerStyle={{ width: "100%", marginTop: 30 }}
+          containerStyle={{ width: '85%', marginTop: 30 }}
           buttonStyle={{ borderColor: 'transparent', borderRadius: 30, backgroundColor: "#1CA69E" }}
           titleStyle={{ color: '#ffffff' }}
           title="Concluir"

@@ -10,17 +10,16 @@ const SettingsProfile = () => {
     navigation.navigate("Login");
   };
 
-  const handleNavConfigAluno = () => {
-    navigation.navigate("ConfigAluno");
+  const handleNavConfigAcademia = () => {
+    navigation.navigate("ConfigAcademia");
   };
 
   return (
     <View style={{ flex: 1 }}>
       <View style={styles.olaTexto}>
-          <Text style={styles.textOla}>Olá,</Text>
         </View>
       <Button
-        onPress={handleNavConfigAluno}
+        onPress={handleNavConfigAcademia}
         containerStyle={{ width: "100%", marginTop: 40 }}
         buttonStyle={{ borderColor: 'transparent', borderRadius: 30 }}
         titleStyle={{ color: "#1CA69E" }}
