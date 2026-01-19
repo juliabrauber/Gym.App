@@ -45,12 +45,12 @@ const styles = StyleSheet.create({
     container:{
         flex:1,
         backgroundColor:"#ffffff",
-        paddingTop: 120,
+        paddingTop: 90,
         alignItems:"center"
     },
     logo:{
-        width:150,
-        height:150,
+        width:175,
+        height:175,
     },
     textRedefinir:{
         fontSize:23,
