@@ -7,7 +7,7 @@ import DashboardTabs from './src/screens/core/DashboardTabs/routesTabs';
 export default function App() {
   return (
     <View style={{ flex: 1 }}>
-      <StatusBar style="light" backgroundColor="#000000" />
+      <StatusBar style="light" backgroundColor="#ffffff" />
            <Routes/>
     </View>
   );

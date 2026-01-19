@@ -1,11 +1,30 @@
 import React, { useState } from 'react'
-import { SearchBar, Text } from '@rneui/themed';
+import { Button, SearchBar, Text } from '@rneui/themed';
 import { View } from 'react-native';
+import { Avatar, Box, FlatList, Pressable, } from 'native-base';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import styles from './style';
+import Storys from '../../../core/Components/Storys';
+import Feed from '../../../core/Components/Feed';
+import AgendAluno from '../../../core/Components/agendAluno';
 
 const HomeAluno = () => { 
 
+const data = [{
+  id:'1',
+  fullName:'Steve',
+  timeStamp:'12:00 PM',
+  recentText:'Good Day',
+  avatarUrl:'https://sujeitoprogramador.com/steve.png',
+},{
+  id:'2',
+  fullName:'Jobs',
+  timeStamp:'12:05 PM',
+  recentText:'Good',
+  avatarUrl:'https://sujeitoprogramador.com/steve.png',
+},
+]
 
 const [search, setSearch] = useState("");
 
@@ -14,12 +33,29 @@ const updateSearch = (search) => {
 };
 
 return (
-  <View style={{ flex: 1 }}>
-    
-        <View style={styles.olaTexto}>
+  <KeyboardAwareScrollView > 
+      <View style={{ flex: 1 }}>
+
+        <View style={styles.container}>
+          <View style={styles.olaTexto}>
           <Text style={styles.textOla}>Olá,</Text>
+              <Pressable style={styles.avatarContainer}>
+              <Avatar
+                source={{ uri: "https://sujeitoprogramador.com/steve.png" }}
+                height={12}
+                width={12}/>
+            </Pressable>
+            </View>
         </View>
-        <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', marginTop: 33, marginLeft: 20, marginBottom: 15 }}> Meu espaço </Text>
+
+          <Box paddingX={4}  marginTop={5} marginBottom={5}>
+            <FlatList
+            horizontal={true}
+            data={data}
+            renderItem={({ item}) => <Storys data={item}/>}
+            showsHorizontalScrollIndicator={false}
+            />
+          </Box>
 
         <SearchBar
           placeholder="Pesquisar..."
@@ -32,12 +68,40 @@ return (
           inputStyle={{ color: 'black' }}
         />
 
-        <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', marginTop: 40, marginLeft: 20, }}> Sugestões </Text>
+        <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold', marginTop: 40, marginLeft: 20, }}> Área Pessoal </Text>
 
-        <Text style={{ color: 'black', fontSize: 18, fontWeight: 'bold', marginTop: 40, marginLeft: 20, }}> Próximos a mim </Text>
+        <Box paddingX={4}  marginTop={2}>
+            <FlatList
+            horizontal={true}
+            data={data}
+            renderItem={({ item}) => <AgendAluno data={item}/>}
+            showsHorizontalScrollIndicator={false}
+            />
+          </Box>
 
-        <Text style={{ color: 'black', fontSize: 18, fontWeight: 'bold', marginTop: 40, marginLeft: 20, }}> Minha evolução </Text>
-  </View>
+        <Text style={{ color: 'black', fontSize: 18, fontWeight: 'bold', marginTop: 20, marginLeft: 20, }}> Locais Próximos </Text>
+
+        <Box paddingX={4}  marginTop={15}>
+            <FlatList
+            horizontal={true}
+            data={data}
+            renderItem={({ item}) => <Feed data={item}/>}
+            showsHorizontalScrollIndicator={false}
+            />
+          </Box>
+
+        <Text style={{ color: 'black', fontSize: 18, fontWeight: 'bold', marginTop: 40, marginLeft: 20, }}> Treino e evolução </Text>
+
+        <Button 
+       containerStyle={{width:"40%", marginTop:30, marginLeft: 20, paddingBottom: 20}}
+        buttonStyle={{ borderColor:'transparent',  borderRadius: 15, backgroundColor:"#1CA69E"  }}
+        titleStyle={{ color: "#ffffff", fontSize:15 }}
+        title="Meu treino" 
+        type="outline" />
+
+
+     </View>
+  </KeyboardAwareScrollView>
 );
 };
 

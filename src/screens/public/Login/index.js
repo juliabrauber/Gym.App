@@ -44,12 +44,12 @@ const Login = () => {
           render={({ field }) => (
             <Input containerStyle={{ width: "85%", marginTop: 75 }}
               style={{ color: "black" }}
-              placeholder='Login'
+              placeholder='E-mail'
               onChangeText={(text) => field.onChange(text)}
               value={field.value} />
           )}
           name="login" />
-        {errors.login && <Text style={{ color: 'red', marginTop: -15 }}>Login obrigatório!</Text>}
+        {errors.login && <Text style={{ color: 'red', marginTop: -15 }}>E-mail obrigatório!</Text>}
 
         <View style={{ flexDirection: 'row', width: '85%', alignItems: 'center' }}>
           <Controller
@@ -72,20 +72,20 @@ const Login = () => {
         {errors.senha && <Text style={{ color: 'red', marginTop: -15 }}>Senha é obrigatório!</Text>}
 
         <Button onPress={() => { handleNavRedPassword(); }}
-          containerStyle={{ width: "100%", marginTop: -8, borderWidth: 0 }}
+          containerStyle={{ width: "85%", marginTop: -8, borderWidth: 0 }}
           titleStyle={{ color: "#808080", textAlign: "right", textDecorationLine: "underline", fontSize: 14, }}
           title="Esqueceu sua senha?"
           type="clear" />
 
         <Button onPress={() => handleSubmit(handleSignIn)()}
-          containerStyle={{ width: "100%", marginTop: 50 }}
+          containerStyle={{ width: "85%", marginTop: 50 }}
           buttonStyle={{ borderColor: 'transparent', borderRadius: 30, backgroundColor: "#1CA69E" }}
           titleStyle={{ color: "#ffffff" }}
           title="Fazer Login"
           type="outline" />
 
         <Button onPress={() => { handleNavRegister(); }}
-          containerStyle={{ width: "100%", marginTop: 30 }}
+          containerStyle={{ width: "85%", marginTop: 30, marginBottom:150 }}
           buttonStyle={{ borderColor: 'transparent', borderRadius: 30, backgroundColor: "#1CA69E" }}
           titleStyle={{ color: "#ffffff" }}
           title="Cadastre-se"

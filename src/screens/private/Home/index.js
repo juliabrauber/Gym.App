@@ -1,9 +1,14 @@
-import RoutesTabs from "../../core/DashboardTabs/routesTabs";
+import React from 'react';
+import { NativeBaseProvider } from 'native-base';
+import RoutesTabs from '../../core/DashboardTabs/routesTabs';
+
 
 
 function Home() {
   return (
-      <RoutesTabs/>
+    <NativeBaseProvider >
+      <RoutesTabs />
+    </NativeBaseProvider>
   );
 }
 
