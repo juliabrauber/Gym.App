@@ -1,4 +1,4 @@
-# Gym.App
+# Gym Mobile App
 
 Este projeto foi desenvolvido no início dos meus estudos em React Native e tem como objetivo principal a gestão de academias. Ele oferece funcionalidades voltadas para o acompanhamento de alunos, treinos, check-ins, notificações, mensagens e configurações de perfis, tanto para alunos quanto para profissionais da academia.
 
